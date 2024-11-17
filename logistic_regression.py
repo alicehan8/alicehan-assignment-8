@@ -23,7 +23,7 @@ def generate_ellipsoid_clusters(distance, n_samples=100, cluster_std=0.5):
     
     # Implement: Shift the second cluster along the x-axis and y-axis for a given distance
     # raise NotImplementedError("Implement the shift of the second cluster")
-    X2 += np.array([distance, distance])
+    X2 += np.array([distance, -1*distance])
     y2 = np.ones(n_samples)
 
     # Combine the clusters into one dataset
@@ -85,7 +85,7 @@ def do_experiments(start, end, step_num):
         intercept = -beta0 / beta2  # Decision boundary intercept
         intercept_list.append(intercept)
 
-        x_values = np.linspace(x_min, x_max, 50)
+        x_values = np.linspace(x_min, x_max, 200)
         y_values = slope * x_values + intercept
         plt.plot(x_values, y_values, color='black', linestyle='--', label='Decision Boundary')
 
@@ -153,7 +153,6 @@ def do_experiments(start, end, step_num):
     plt.title("Shift Distance vs Beta1 / Beta2 (Slope)")
     plt.xlabel("Shift Distance")
     plt.ylabel("Beta1 / Beta2")
-    plt.ylim(-2, 0)
 
     # Implement: Plot beta0 / beta2 (Intercept ratio)
     plt.subplot(3, 3, 5)
